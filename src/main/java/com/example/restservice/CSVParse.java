@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import org.springframework.core.io.ClassPathResource;
+
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
@@ -13,8 +15,7 @@ import com.opencsv.CSVReaderBuilder;
 
 public class CSVParse {
 	public static BufferedReader reader() throws Exception {
-		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-		InputStream inputStream = classloader.getResourceAsStream("Betriebsstellenverzeichnis.csv");
+		InputStream inputStream = new ClassPathResource("Betriebsstellenverzeichnis.csv").getInputStream();
 		InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
 		return new BufferedReader(streamReader);
 	}
