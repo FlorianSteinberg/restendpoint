@@ -12,17 +12,9 @@ public class Betriebsstellen {
 	private String[] spaltennamen;
 	private List<String[]> betriebsstellen;
 	
-	public Betriebsstellen () {
-		try {
-			this.spaltennamen = CSVParse.spaltennamen();
-		} catch (Exception e) {
-			e.printStackTrace();
-		};
-		try {
-			betriebsstellen = CSVParse.betriebsstellen();
-		} catch (Exception e) {
-			e.printStackTrace();
-		};
+	public Betriebsstellen () throws Exception {
+		spaltennamen = CSVParse.spaltennamen();
+		betriebsstellen = CSVParse.betriebsstellen();
 	}
 	
 	public String[] getSpaltennamen() {

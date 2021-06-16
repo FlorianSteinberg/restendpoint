@@ -1,6 +1,7 @@
 package com.example.restservice;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -28,8 +29,11 @@ public class CSVParse {
 		CSVReader csvReader = new CSVReaderBuilder(reader())
 				.withCSVParser(parser())
 				.build();
-		String[] spaltennamen = csvReader.readNext();
-		return spaltennamen;
+		try {
+			return csvReader.readNext();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	public static List<String[]> betriebsstellen() throws Exception {
@@ -38,7 +42,10 @@ public class CSVParse {
 				.withSkipLines(1)
 				.build();
 		
-		List<String[]> betriebsstellen = csvReader.readAll();
-		return betriebsstellen;
+		try {
+			return csvReader.readAll();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
