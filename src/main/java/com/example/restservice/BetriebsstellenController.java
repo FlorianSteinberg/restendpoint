@@ -3,7 +3,8 @@ package com.example.restservice;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,11 +16,10 @@ public class BetriebsstellenController {
 		this.betriebsstellen = betriebsstellen;
 	}
 	
-	@GetMapping("/betriebsstelle")
-	public Map<String,String> betriebsstelle(
-			@RequestParam(value = "Abk", defaultValue = "") String identifier
-			) {
-		String[] betriebsstelle = betriebsstellen.findBetriebsstelleBy("Abk",identifier);
+	@GetMapping("/betriebsstelle/{id}")
+	@ResponseBody
+	public Map<String,String> betriebsstelle(@PathVariable String id) {
+		String[] betriebsstelle = betriebsstellen.findBetriebsstelleBy("Abk",id);
 		return betriebsstellen.printToMap(betriebsstelle,relevant_columns);
 	}
 }
