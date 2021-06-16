@@ -1,9 +1,9 @@
 package com.example.restservice;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-
-import org.json.JSONObject;
+import java.util.Map;
 
 public class Betriebsstellen {
 	private String[] spaltennamen;
@@ -30,14 +30,14 @@ public class Betriebsstellen {
 				.orElse(null);
 	}
 	
-	public JSONObject printToJson (String[] betriebsstelle, String[] relevant_columns) {
-		JSONObject JSONbetriebsstelle = new JSONObject();
+	public Map<String,String> printToMap (String[] betriebsstelle, String[] relevant_columns) {
+		Map<String,String> betriebsstelleMap = new HashMap<>();
 		for (int i = 0; i < relevant_columns.length; i++) {
-			if (betriebsstelle[i] != "") {
+			if (!betriebsstelle[i].equals("")) {
 				int column_index = Arrays.asList(spaltennamen).indexOf(relevant_columns[i]);
-				JSONbetriebsstelle.put(spaltennamen[column_index],betriebsstelle[column_index]);
+				betriebsstelleMap.put(spaltennamen[column_index],betriebsstelle[column_index]);
 				}
 		}	
-		return JSONbetriebsstelle;
+		return betriebsstelleMap;
 	}
 }
