@@ -25,6 +25,10 @@ public class Betriebsstellen {
 		};
 	}
 	
+	public String[] getSpaltennamen() {
+		return spaltennamen;
+	}
+	
 	public String[] findBetriebsstelleBy (String column_name, String value) {
 		int column_index = Arrays.asList(spaltennamen).indexOf(column_name);
 		return betriebsstellen.stream()

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BetriebsstellenController {
 	private final Betriebsstellen betriebsstellen;
+	//The set off existing columns can be gotten using betriebsstellen.getSpaltennamen(). Stand 2018 the existing columns are
+	//Abk;Name;Kurzname;Typ;Betr-Zust;Primary location code;UIC;RB;gültig von;gültig bis;Netz-Key;Fpl-rel;Fpl-Gr
 	private String[] relevant_columns = {"Name", "Kurzname", "Typ"};
 	
 	public BetriebsstellenController(Betriebsstellen betriebsstellen) {
