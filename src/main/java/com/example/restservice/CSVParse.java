@@ -21,7 +21,7 @@ public class CSVParse {
 	}
 	
 	public static CSVParser parser() throws Exception {
-		return new CSVParserBuilder().withSeparator(";".charAt(0)).build();
+		return new CSVParserBuilder().withSeparator(';').build();
 	}
 	
 	public static String[] spaltennamen() throws Exception {
